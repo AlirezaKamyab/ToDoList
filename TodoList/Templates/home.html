@@ -3,13 +3,25 @@
 {% block title %}Aimlessly | ToDo{% endblock %}
 
 {% block content %}
-
+    <h1>Things I should do</h1>
     {% if items %}
-    <ul>
+    <table class="table table-bordered">
         {% for item in items %}
-            <li>{{item.item}} | {{item.checked}}</li>
+            {% if item.checked %}
+                <tr class="table-secondary">
+                    <td><center>{{item.item}}</center></td>
+                    <td><center>{{item.checked}}</center></td>
+                    <td><center>Delete</center></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td><center>{{item.item}}</center></td>
+                    <td><center>{{item.checked}}</center></td>
+                    <td><center>Delete</center></td>
+                </tr>
+            {% endif %}
         {% endfor %}
-    </ul>
+    </table>
     {% endif %}
 
 {% endblock %}
