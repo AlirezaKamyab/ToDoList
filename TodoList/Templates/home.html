@@ -4,6 +4,12 @@
 
 {% block content %}
 
-<h1>Aimlessly Webpage</h1>
+    {% if items %}
+    <ul>
+        {% for item in items %}
+            <li>{{item.item}} | {{item.checked}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
 {% endblock %}
