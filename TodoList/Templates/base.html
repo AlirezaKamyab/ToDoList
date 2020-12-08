@@ -38,8 +38,9 @@
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Item Name" aria-label="Search">
+        <form class="d-flex" method="POST">
+          {% csrf_token %}
+          <input class="form-control me-2" type="search" placeholder="Item Name" aria-label="Search" name="itemName">
           <button class="btn btn-outline-secondary" type="submit">Add</button>
         </form>
       </div>

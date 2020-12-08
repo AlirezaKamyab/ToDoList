@@ -4,6 +4,16 @@
 
 {% block content %}
     <h1>Things I should do</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+    {% endif %}
+
     {% if items %}
     <table class="table table-bordered">
         {% for item in items %}
@@ -11,13 +21,13 @@
                 <tr class="table-secondary">
                     <td class="stricker"><center>{{item.item}}</center></td>
                     <td><center>{{item.checked}}</center></td>
-                    <td><center>Delete</center></td>
+                    <td><center><a style="text-decoration: none; color: red;" href="{% url 'delete' item.id %}">Delete</a></center></td>
                 </tr>
             {% else %}
                 <tr>
                     <td><center>{{item.item}}</center></td>
                     <td><center>{{item.checked}}</center></td>
-                    <td><center>Delete</center></td>
+                    <td><center><a style="text-decoration: none; color: red;" href="{% url 'delete' item.id %}">Delete</a></center></td>
                 </tr>
             {% endif %}
         {% endfor %}
