@@ -1,8 +1,8 @@
+from django.forms.fields import NullBooleanField
 from django.shortcuts import render, redirect
 from .models import List
 from .forms import *
 from django.contrib import messages
-from django.http import HttpResponseRedirect
 
 # Create your views here.
 def home(request):
@@ -27,4 +27,15 @@ def delete(request, item_id):
         messages.success(request, 'Item deleted successfully')
         return redirect('home')
     except:
+        return redirect('home')
+
+def crossout(request, item_id):
+    try:
+        item = List.objects.get(pk = item_id)
+        item.changeChecked()
+        item.save()
+        messages.success(request, 'Item is checked!' if item.checked else 'item is unchecked!')
+    except:
+        pass
+    finally:
         return redirect('home')
