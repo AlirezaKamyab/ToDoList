@@ -20,13 +20,13 @@
             {% if item.checked %}
                 <tr class="table-secondary">
                     <td class="stricker"><center><a style="text-decoration: none; color: black;" href="{% url 'cross' item.id %}">{{item.item}}</a></center></td>
-                    <td><center>{{item.checked}}</center></td>
+                    <td><center>Completed</center></td>
                     <td><center><a style="text-decoration: none; color: red;" href="{% url 'delete' item.id %}">Delete</a></center></td>
                 </tr>
             {% else %}
                 <tr>
                     <td><center><a style="text-decoration: none; color: black;" href="{% url 'cross' item.id %}">{{item.item}}</a></center></td>
-                    <td><center>{{item.checked}}</center></td>
+                    <td><center>Pending</center></td>
                     <td><center><a style="text-decoration: none; color: red;" href="{% url 'delete' item.id %}">Delete</a></center></td>
                 </tr>
             {% endif %}

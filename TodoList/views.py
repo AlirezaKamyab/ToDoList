@@ -24,7 +24,7 @@ def delete(request, item_id):
     try:
         item = List.objects.get(pk=item_id)
         item.delete()
-        messages.success(request, 'Item deleted successfully')
+        messages.success(request, 'Item deleted successfully!')
         return redirect('home')
     except:
         return redirect('home')
@@ -34,7 +34,7 @@ def crossout(request, item_id):
         item = List.objects.get(pk = item_id)
         item.changeChecked()
         item.save()
-        messages.success(request, 'Item is checked!' if item.checked else 'item is unchecked!')
+        messages.success(request, 'Item is checked!' if item.checked else 'Item is unchecked!')
     except:
         pass
     finally:
