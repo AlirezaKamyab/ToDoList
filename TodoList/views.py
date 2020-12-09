@@ -39,3 +39,18 @@ def crossout(request, item_id):
         pass
     finally:
         return redirect('home')
+
+def edit(request, item_id):
+    try:
+        if request.method == "POST":
+            item = List.objects.get(pk=item_id)
+            item.item = request.POST['itemName']
+            item.checked = request.POST['checked']
+            item.save()
+            messages.success(request, "Item is edited successfully!")
+            return redirect('home')
+        else:
+            item = List.objects.get(pk=item_id)
+            return render(request, 'edit.html', {'item':item})
+    except:
+        return redirect('home')

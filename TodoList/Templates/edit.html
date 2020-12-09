@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}ToDo | Edit {% endblock %}
+
+{% block content %}
+
+    {% if item %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">New Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{item.item}}" name="itemName">
+        </div>
+        <input type="hidden" name="checked" value="{{item.checked}}">
+        <button class="btn btn-secondary" type="submit">Edit</button>
+    </form>
+    {% endif %}
+
+{% endblock %}
